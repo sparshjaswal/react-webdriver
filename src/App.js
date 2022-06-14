@@ -63,7 +63,7 @@ const App = () => {
             {renderErrorMessage("pass")}
           </div>
           <div className="button-container">
-            <input type="submit" />
+            <input type="submit" onClick={handleSubmit} />
           </div>
         </form>
       </div>
@@ -73,7 +73,13 @@ const App = () => {
   return (
     <div className="app">
       <div className="login-form">
-        {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
+        {isSubmitted ? (
+          <div className="login-successfull">
+            User is successfully logged in
+          </div>
+        ) : (
+          renderForm
+        )}
       </div>
     </div>
   );
