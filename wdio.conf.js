@@ -49,30 +49,21 @@ exports.config = {
   //
   capabilities: [
     {
-      maxInstances:1,
+      maxInstances: 5,
       browserName: "chrome",
-      port: 5555,
       acceptInsecureCerts: true,
-      'goog:chromeOptions': { 
-        args: ["--headless", "user-agent=...","--disable-gpu","--window-size=1440,735"]
-        },
+      "goog:chromeOptions": {
+        args: ["--headless"],
+      },
     },
-    
-    // {
-    //   maxInstances:1,
-    //   browserName: "firefox",
-    //   port: 5555,      
-    //   acceptInsecureCerts: true,
-    //   "moz:firefoxOptions": {
-    //     args: ['-headless']
-    //   },
-    // },
-    // {
-    //   maxInstances:1,
-    //   browserName: "MicrosoftEdge",
-    //   port: 5555,      
-    //   acceptInsecureCerts: true,
-    // },
+    {
+      browserName: "MicrosoftEdge",
+      maxInstances: 5,
+      acceptInsecureCerts: true,
+      "ms:edgeOptions": {
+        args: ["--headless"],
+      },
+    },
   ],
   //
   // ===================
@@ -121,13 +112,7 @@ exports.config = {
   // Services take over a specific job you don't want to take care of. They enhance
   // your test setup with almost no effort. Unlike plugins, they don't add new
   // commands. Instead, they hook themselves up into the test process.
-  services: [
-        ['selenium-standalone', 
-            { drivers: 
-                { firefox: '0.29.1', chrome: true, chromiumedge: 'latest' } 
-            }
-        ]
-    ],
+  services: [["chromedriver", "edgedriver"]],
   // Framework you want to run your specs with.
   // The following are supported: Mocha, Jasmine, and Cucumber
   // see also: https://webdriver.io/docs/frameworks
